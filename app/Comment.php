@@ -8,11 +8,12 @@ class Comment extends Model
 {
 
     protected $guarded = [];
+    protected $table = "comments";
 
 
 
     // Un commentaire donné est lié un et un seul post
-    public function authorPost(){
+    public function post(){
 
         return $this->belongsTo('App\Post','posts_id');
     }

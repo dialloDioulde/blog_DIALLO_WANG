@@ -17,7 +17,6 @@ class ArticlesAjaxController extends Controller
         $posts = Post::all();
         return view('admin/AjaxArticlesCRUD', compact('posts'));
     }
-    //
 
 
     public function store(Request $request){

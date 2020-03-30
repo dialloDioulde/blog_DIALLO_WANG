@@ -9,7 +9,7 @@
             <div class="card my-5 ml-5">
                 <div class="card-header bg-info">Contactez-moi</div>
                 <div class="container card-body w-50">
-                    <form action="contacts" method="POST">
+                    <form action="{{route('contatcs.store')}}" method="POST">
                         @csrf
                         <div class="form-group">
                             <input type="text" class="form-control @error('contact_name') is-invalid @enderror " id="contact_name"

@@ -17,16 +17,5 @@ class CommentController extends Controller
 
     }
 
-    public function store(Request $request){
 
-        $this->validate($request, [
-            'comment_name' => ['required'],
-            'comment_email' => ['required'],
-            'comment_content' => ['required']
-        ]);
-
-
-
-
-    }
 }

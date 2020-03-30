@@ -37,7 +37,7 @@ Route::get('/send_contact', 'ContactController@create');
 
 Route::get('/email_contact', 'ContactController@index');
 
-Route::post('/contacts', 'ContactController@store');
+Route::post('/contacts', 'ContactController@store')->name('contatcs.store');
 
 Auth::routes();
 
@@ -74,9 +74,29 @@ Route::put('/updatePost/{id}', 'ArticlesAjaxController@update');
 Route::delete('/deletePost/{id}', 'ArticlesAjaxController@destroy');
 
 
+
+// Création et Gestion de Post par le user même
+
+Route::get('/post', 'PostController@create')->name('post.create');
+
+Route::post('/post', 'PostController@store')->name('post.store');
+
+Route::get('/post/{post}', 'PostController@edit')->name('post.edit');
+
+Route::patch('/post/{post}', 'PostController@update')->name('post.update');
+
+Route::delete('/post/{post}', 'PostController@destroy')->name('post.delete');
+
+
+
+
 // Commentaires
 Route::get('/Comment', 'CommentController@create');
 
-Route::post('/addComment', 'ArticlesController@store');
+Route::post('/addComment/{post}', 'ArticlesController@store')->name('addComment.store');
 
+Route::get('/addComment/{comment}', 'ArticlesController@edit')->name('addComment.edit');
 
+Route::patch('/addComment/{comment}', 'ArticlesController@update')->name('addComment.update');
+
+Route::delete('/addComment/{comment}', 'ArticlesController@destroy')->name('addComment.delete');

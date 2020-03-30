@@ -15,45 +15,87 @@ class ArticlesController extends Controller
         $this->middleware('auth');
     }
 
+
+    // Affichage du titre des articles
     public function index(){
+
         $posts = Post::status();
         return view('welcome', ['p' => $posts]);
     }
 
-    //
 
-
-
-    // show
+    // Affichage des articles
     public function show($post_name) {
+
         $post = Post::where('post_name',$post_name)->get();
-
-        $comment = Comment::all();
-
-        return view('/posts/single', ['post'=>$post,'comments'=>$comment]);
+        return view('/posts/single', ['post'=>$post]);
     }
 
 
-    public function store(Request $request, Post $post){
-
-            $this->validate($request, [
-                'comment_name' => ['required'],
-                'comment_email' => ['required'],
-                'comment_content' => ['required']
-            ]);
-
-
-        $comment = $post->auhtorComment()->create([
-                'user_id' => auth()->user()->id,
-                'comment_name' => $request['comment_name'],
-                'comment_email' => $request['comment_email'],
-                'comment_content' => $request['comment_content'],
-
-            ]);
-
-
-        return $comment;
-
+    public function postStore(){
 
     }
+
+
+
+    // Enregsitrement des Commentaires
+    public function store(Request $request, $post){
+
+        $this->validate($request, [
+            'comment_name' => ['required'],
+            'comment_email' => ['required'],
+            'comment_content' => ['required']
+        ]);
+
+        $comment = new Comment();
+
+        $comment->user_id = Auth::id();
+        $comment->posts_id = $post;
+        $comment->comment_name = $request->comment_name;
+        $comment->comment_email = $request->comment_email;
+        $comment->comment_content = $request->comment_content;
+
+        $comment->save();
+
+        return redirect()->back();
+
+    }
+
+    // Edition De Commentaires
+    public function edit($comment){
+        $comment = Comment::find($comment);
+        return view('commentaires/editComment')->withComment($comment);
+    }
+
+
+    // Enregistrement des données d'éditions
+    public function update(Request $request,$comment){
+
+        $comment = Comment::find($comment);
+
+        request()->validate([
+            'comment_name' => ['required'],
+            'comment_email' => ['required'],
+            'comment_content' => ['required']
+        ]);
+
+        $comment->comment_name = $request->comment_name;
+        $comment->comment_email = $request->comment_email;
+        $comment->comment_content = $request->comment_content;
+
+        $comment->save();
+
+        return redirect('welcome');
+
+    }
+
+
+    // Suppression De Commentaires
+    public function destroy(Comment $comment){
+
+        $comment->delete();
+        return redirect()->back();
+    }
+
+
 }

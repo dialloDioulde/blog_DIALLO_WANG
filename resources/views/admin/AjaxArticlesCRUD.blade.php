@@ -191,9 +191,6 @@
 
    <!-- Fin Du Modal De Suppression Des Posts -->
 
-
-
-
    <script type="text/javascript">
         $(document).ready(function (){
 
@@ -301,9 +298,6 @@
                     }
                 });
             });
-
-
-
 
         });
 

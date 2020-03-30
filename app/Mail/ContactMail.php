@@ -10,16 +10,16 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $data;
+    public $contact;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($contact)
     {
-        $this->data = $data;
+        $this->contact = $contact;
         //
     }
 

@@ -16,14 +16,15 @@ class Post extends Model
     }
 
     // Posts-Comment
-    public function auhtorComment(){
-        return $this->hasMany('App\Comment', 'comment_id');
+    public function comments(){
+
+        return $this->hasMany('App\Comment','posts_id');
     }
 
 
     //
     public function scopeStatus($query){
-        return $query->whereIn('id', [8,9,10])->get();
+        return $query->latest()->limit(3)->get();;
     }
 
     //

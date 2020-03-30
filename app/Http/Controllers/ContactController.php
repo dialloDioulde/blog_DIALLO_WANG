@@ -35,8 +35,10 @@ class ContactController extends Controller
         $contact->contact_email = $request->contact_email;
         $contact->contact_message = $request->contact_message;
 
-        $contact->save();
+        // Envoie un email à l'admin diouldmariia@hotmail.fr
+        Mail::to('diouldmariia@hotmail.fr')->send(new ContactMail($contact));
 
+        $contact->save();
         return view('confirm');
     }
 }

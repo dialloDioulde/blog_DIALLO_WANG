@@ -37,8 +37,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function posts()
-    {
+    // Cette fonction retourne les posts d'un utilisateur donné
+    public function posts(){
         return $this->hasMany('App\Post');
     }
 
@@ -53,11 +53,12 @@ class User extends Authenticatable
         return $this->roles()->where('name','admin')->first();
     }
 
-    // Cette fonction
+    // Cette fonction retourne l'ensemble des rôles d'un utilisateur donné
     public function hasAnyRole(array $roles){
         return $this->roles()->whereIn('name',$roles)->first();
     }
 
+    // Cette fonction retourne les commentaires d'un utilisateur donné
     public function comment(){
         return $this->hasMany('App\Comment');
     }
