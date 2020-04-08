@@ -25,10 +25,8 @@ class ArticlesAjaxController extends Controller
 
         $post->user_id = auth()->user()->id;
         $post->post_title = $request->input('title');
-        $post->post_name = $request->input('name');
         $post->post_type = $request->input('type');
-        $post->post_category = $request->input('category');
-        $post->post_status = $request->input('status');
+        $post->post_status = false;
         $post->post_content = $request->input('content');
 
         $post->save();
@@ -37,18 +35,12 @@ class ArticlesAjaxController extends Controller
     }
 
 
-    public function edit(){
-
-    }
-
     public function update(Request $request,$id){
 
         $post = Post::find($id);
 
         $post->post_title = $request->input('e_title');
-        $post->post_name = $request->input('e_name');
         $post->post_type = $request->input('e_type');
-        $post->post_category = $request->input('e_category');
         $post->post_status = $request->input('e_status');
         $post->post_content = $request->input('e_content');
 

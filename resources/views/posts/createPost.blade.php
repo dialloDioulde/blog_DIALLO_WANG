@@ -2,11 +2,11 @@
 
 @section('content')
 
-    <div class="container border">
-        <div class="card mt-5 ml-5 mr-5 mb-5">
-            <div class="card-header bg-info text-white">Créer Votre Post</div>
-            <div class="container card-body">
-                <form action="{{route('post.store')}}" method="POST">
+    <div class="container border-top border-bottom bg-white">
+        <div class="card mt-5 ml-5 mr-5 mb-5 col-md-10">
+            <div class="card-header bg-white">Créer Votre Post</div>
+            <div class="container card-body ">
+                <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
@@ -15,26 +15,6 @@
                         @error('post_title')
                         <div class="invalid-feedback">
                             {{$errors->first('post_title')}}
-                        </div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control @error('post_status') is-invalid @enderror " id="post_status"
-                               value="{{ old('post_status') }}" placeholder="Statut" name="post_status">
-                        @error('post_status')
-                        <div class="invalid-feedback">
-                            {{$errors->first('post_status')}}
-                        </div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control @error('post_name') is-invalid @enderror " id="post_name"
-                               value="{{ old('post_name') }}" placeholder="Nom de l'article" name="post_name">
-                        @error('post_name')
-                        <div class="invalid-feedback">
-                            {{$errors->first('post_name')}}
                         </div>
                         @enderror
                     </div>
@@ -49,17 +29,6 @@
                         @enderror
                     </div>
 
-
-                    <div class="form-group">
-                        <input type="text" class="form-control @error('post_category') is-invalid @enderror " id="post_category"
-                               value="{{ old('post_category') }}" placeholder="Categorie de l'article" name="post_category">
-                        @error('post_category')
-                        <div class="invalid-feedback">
-                            {{$errors->first('post_category')}}
-                        </div>
-                        @enderror
-                    </div>
-
                     <div class="form-group">
                         <textarea type="text" rows="7" class="form-control  @error('post_content') is-invalid @enderror" id="post_content"
                                   value="{{ old('post_content') }}" placeholder="Contenu de l'article" name="post_content"></textarea>
@@ -70,7 +39,10 @@
                         @enderror
                     </div>
 
-                    <button class="btn btn-info text-white">Publier Votre Post</button>
+                    <div class="d-flex">
+                        <button class="btn btn-secondary text-white mr-2">Publier Votre Post</button>
+                        <a class="btn btn-secondary mr-2" href="/welcome">ANNULER</a>
+                    </div>
                 </form>
             </div>
 

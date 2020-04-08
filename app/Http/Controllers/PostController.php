@@ -6,6 +6,7 @@ use App\Comment;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -18,22 +19,20 @@ class PostController extends Controller
     public function store(){
 
         $data = request()->validate([
-            'post_content' => ['required'],
-            'post_title' => ['required'],
-            'post_status' => ['required'],
-            'post_name' => ['required'],
-            'post_type' => ['required'],
-            'post_category' => ['required'],
+            'post_content' => 'required',
+            'post_title' => 'required',
+            'post_type' => 'required',
         ]);
 
-        auth()->user()->posts()->create([
-            'post_content' => $data['post_content'],
-            'post_title' => $data['post_title'],
-            'post_status' => $data['post_status'],
-            'post_name' => $data['post_name'],
-            'post_type' => $data['post_type'],
-            'post_category' => $data['post_category'],
-        ]);
+        $post = new Post();
+        $post->user_id = Auth::id();
+        $post->post_title = $data['post_title'];
+        $post->post_content = $data['post_content'];
+        $post->post_status = false;
+        $post->post_type = $data['post_type'];
+
+
+        $post->save();
 
         return redirect('welcome');
 
@@ -58,10 +57,7 @@ class PostController extends Controller
         $data = request()->validate([
             'post_content' => ['required'],
             'post_title' => ['required'],
-            'post_status' => ['required'],
-            'post_name' => ['required'],
             'post_type' => ['required'],
-            'post_category' => ['required'],
         ]);
 
         $post->update($data);
@@ -77,5 +73,7 @@ class PostController extends Controller
         $post->delete();
         return redirect('welcome');
     }
+
+
 
 }

@@ -12,9 +12,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'user_id' => $faker->randomElement($users),
         'post_content' => $faker->paragraph(),
         'post_title' => $faker->sentence(),
-        'post_status'=> 'publish',
-        'post_name' => $faker->word(),
+        'post_status'=> $faker->boolean,
         'post_type' => 'article',
-        'post_category'=> $faker->word(),
     ];
 });

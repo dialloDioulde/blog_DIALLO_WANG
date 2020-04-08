@@ -458,7 +458,7 @@ class ComposerStaticInit9feeb21d4147175cdb246453e185cbf3
         'App\\Http\\Requests\\CommenttRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CommenttRequest.php',
         'App\\Http\\Requests\\ContactRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ContactRequest.php',
         'App\\Mail\\ContactMail' => __DIR__ . '/../..' . '/app/Mail/ContactMail.php',
-        'App\\Policies\\CommentPolicy' => __DIR__ . '/../..' . '/app/Policies/CommentPolicy.php',
+        'App\\Policies\\PostPolicy' => __DIR__ . '/../..' . '/app/Policies/PostPolicy.php',
         'App\\Post' => __DIR__ . '/../..' . '/app/Post.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

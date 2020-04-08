@@ -3,7 +3,7 @@
 
 @section('content')
 
-   <div class="container-fluid">
+   <div class="container-fluid bg-white">
 
        <!-- Modal d'Ajout De Posts -->
        <div class="modal fade" id="addPostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -19,23 +19,10 @@
                        <form id="addform">
                            @csrf
                            <div class="form-group">
-                               <label for="name">Nom Du Post :</label>
-                               <input type="text" class="form-control" id="name" name="name" placeholder="Saisir le nom du Post">
-                           </div>
-                           <div class="form-group">
                                <label for="title">Titre Du Post :</label>
                                <input type="text" class="form-control" id="title" name="title" placeholder="Saisir le titre du Post">
                            </div>
 
-                           <div class="form-group">
-                               <label for="category">Catégorie Du Post :</label>
-                               <input type="text" class="form-control" id="category" name="category" placeholder="Saisir la Catégorie du Post">
-                           </div>
-
-                           <div class="form-group">
-                               <label for="status">Statut Du Post :</label>
-                               <input type="text" class="form-control" id="status" name="status" placeholder="Saisir le statut du Post">
-                           </div>
 
                            <div class="form-group">
                                <label for="type">Type Du Post :</label>
@@ -60,7 +47,7 @@
 
        <div class="offset-md-10 mr-2">
            <!-- Button trigger modal -->
-           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPostModal">
+           <button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#addPostModal">
                AJOUTER UN POST
            </button>
        </div>
@@ -73,11 +60,9 @@
            <thead class="bg-info">
            <tr>
                <th scope="row">ID</th>
-               <th scope="col">Nom</th>
                <th scope="col">Titre</th>
                <th scope="col">Contenu</th>
                <th scope="col">Statut</th>
-               <th scope="col">Categorie</th>
                <th scope="col">Type</th>
                <th class="text-right">Actions</th>
                <th></th>
@@ -89,11 +74,9 @@
            @foreach($posts as $post)
                <tr>
                    <td>{{$post->id}}</td>
-                   <td>{{$post->post_name}}</td>
                    <td>{{$post->post_title}}</td>
                    <td>{{$post->post_content}}</td>
                    <td>{{$post->post_status}}</td>
-                   <td>{{$post->post_category}}</td>
                    <td>{{$post->post_type}}</td>
                    <td><a href="#"><button class="btn btn-warning editbtn">EDITER</button></a></td>
                    <td><a href="#"><button class="btn btn-danger deletebtn">SUPPRIMER</button></a></td>
@@ -121,28 +104,20 @@
                        @csrf
                        @method('PUT')
                        <input type="hidden" id="e_id" name="e_id">
-                       <div class="form-group">
-                           <label for="name">Nom Du Post :</label>
-                           <input type="text" class="form-control" id="e_name" name="e_name" placeholder="Saisir le nom du Post">
-                       </div>
+
                        <div class="form-group">
                            <label for="title">Titre Du Post :</label>
                            <input type="text" class="form-control" id="e_title" name="e_title" placeholder="Saisir le titre du Post">
                        </div>
 
                        <div class="form-group">
-                           <label for="category">Catégorie Du Post :</label>
-                           <input type="text" class="form-control" id="e_category" name="e_category" placeholder="Saisir la Catégorie du Post">
-                       </div>
-
-                       <div class="form-group">
-                           <label for="status">Statut Du Post :</label>
-                           <input type="text" class="form-control" id="e_status" name="e_status" placeholder="Saisir le statut du Post">
-                       </div>
-
-                       <div class="form-group">
                            <label for="type">Type Du Post :</label>
                            <input type="text" class="form-control" id="e_type" name="e_type" placeholder="Saisir le type du Post">
+                       </div>
+
+                       <div class="form-group">
+                           <label for="type">Validation Du Post :</label>
+                           <input type="text" class="form-control" id="e_status" name="e_status" placeholder="Valider le Post">
                        </div>
 
                        <div class="form-group">
@@ -229,12 +204,10 @@
                 console.log(data);
 
                 $('#e_id').val(data[0]);
-                $('#e_name').val(data[1]);
-                $('#e_title').val(data[2]);
-                $('#e_content').val(data[3]);
-                $('#e_status').val(data[4]);
-                $('#e_category').val(data[5]);
-                $('#e_type').val(data[6]);
+                $('#e_title').val(data[1]);
+                $('#e_content').val(data[2]);
+                $('#e_status').val(data[3]);
+                $('#e_type').val(data[4]);
                 console.log(data);
             });
 

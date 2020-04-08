@@ -24,7 +24,7 @@ Route::get('welcome', 'ArticlesController@index');
 
 Route::get('/articles', 'ArticlesController@create');
 
-Route::get('/article/{post_name}', 'ArticlesController@show');
+Route::get('/article/{post_title}', 'ArticlesController@show');
 
 Route::post('/articles', 'ArticlesController@store');
 

@@ -25,17 +25,11 @@ class ArticlesController extends Controller
 
 
     // Affichage des articles
-    public function show($post_name) {
+    public function show($post_title) {
 
-        $post = Post::where('post_name',$post_name)->get();
+        $post = Post::where('post_title',$post_title)->get();
         return view('/posts/single', ['post'=>$post]);
     }
-
-
-    public function postStore(){
-
-    }
-
 
 
     // Enregsitrement des Commentaires
@@ -51,9 +45,9 @@ class ArticlesController extends Controller
 
         $comment->user_id = Auth::id();
         $comment->posts_id = $post;
-        $comment->comment_name = $request->comment_name;
-        $comment->comment_email = $request->comment_email;
-        $comment->comment_content = $request->comment_content;
+        $comment->comment_name = $request->input('comment_name');
+        $comment->comment_email = $request->input('comment_email');
+        $comment->comment_content = $request->input('comment_content');
 
         $comment->save();
 

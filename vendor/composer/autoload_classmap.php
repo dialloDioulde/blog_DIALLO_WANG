@@ -35,7 +35,7 @@ return array(
     'App\\Http\\Requests\\CommenttRequest' => $baseDir . '/app/Http/Requests/CommenttRequest.php',
     'App\\Http\\Requests\\ContactRequest' => $baseDir . '/app/Http/Requests/ContactRequest.php',
     'App\\Mail\\ContactMail' => $baseDir . '/app/Mail/ContactMail.php',
-    'App\\Policies\\CommentPolicy' => $baseDir . '/app/Policies/CommentPolicy.php',
+    'App\\Policies\\PostPolicy' => $baseDir . '/app/Policies/PostPolicy.php',
     'App\\Post' => $baseDir . '/app/Post.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

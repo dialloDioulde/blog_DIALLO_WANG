@@ -21,7 +21,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="bg-info">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -37,10 +37,8 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item"><a href="/welcome" class="nav-link active">Home</a></li>
                         <li class="nav-item"><a href="/send_contact" class="nav-link active">Contactez-Moi</a></li>
-                        <li class="nav-item"><a href="/articles" class="nav-link active">Articles</a></li>
-                        <li class="nav-item"><a href="/email_contact" class="nav-link active">Liste Des Rendez-Vous</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="/articleCrud">Admin Articles</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="/Comment">Comment</a></li>
+                        <li class="nav-item"><a href="/email_contact" class="nav-link active">Rendez-Vous</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/articleCrud">Admin-Articles</a></li>
 
 
 

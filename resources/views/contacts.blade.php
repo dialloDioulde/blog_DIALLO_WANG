@@ -3,12 +3,11 @@
 
 @section('content')
 
-    <div class="container-fluid">
-        <div class="container-fluid ">
-            <br>
-            <div class="card my-5 ml-5">
-                <div class="card-header bg-info">Contactez-moi</div>
-                <div class="container card-body w-50">
+    <div class="container">
+
+            <div class="card my-5 ml-5 col-md-6">
+                <div class="card-header">Contactez-moi</div>
+                <div class="container card-body ">
                     <form action="{{route('contatcs.store')}}" method="POST">
                         @csrf
                         <div class="form-group">
@@ -42,13 +41,11 @@
                             @enderror
                         </div>
 
-                        <button class="btn btn-primary">Envoyer</button>
+                        <button class="btn btn-secondary">Envoyer</button>
                     </form>
                 </div>
 
             </div>
-
-        </div>
 
     </div>
 

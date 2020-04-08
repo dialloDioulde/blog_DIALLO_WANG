@@ -6,19 +6,10 @@
         <div class="card mt-5 ml-5 mr-5 mb-5">
             <div class="card-header bg-info text-white">Publier Votre Post</div>
             <div class="container card-body">
-                <form action="{{route('post.update', $post->id)}}" method="POST">
+                <form action="{{route('post.update', $post->id)}}" method="POST" enctype="multipart/form-data">
                     @method('PATCH')
                     @csrf
 
-                    <div class="form-group">
-                        <textarea type="text" rows="5" class="form-control  @error('post_content') is-invalid @enderror" id="post_content"
-                                  value="{{ old('post_content') ?? $post->post_content }}" placeholder="Contenu de l'article" name="post_content"></textarea>
-                        @error('post_content')
-                        <div class="invalid-feedback">
-                            {{$errors->first('post_content')}}
-                        </div>
-                        @enderror
-                    </div>
 
                     <div class="form-group">
                         <input type="text" class="form-control @error('post_title') is-invalid @enderror" id="post_title"
@@ -26,26 +17,6 @@
                         @error('post_title')
                         <div class="invalid-feedback">
                             {{$errors->first('post_title')}}
-                        </div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control @error('post_status') is-invalid @enderror " id="post_status"
-                               value="{{ old('post_status') ?? $post->post_status }}" placeholder="Statut" name="post_status">
-                        @error('post_status')
-                        <div class="invalid-feedback">
-                            {{$errors->first('post_status')}}
-                        </div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control @error('post_name') is-invalid @enderror " id="post_name"
-                               value="{{ old('post_name') ?? $post->post_name }}" placeholder="Nom de l'article" name="post_name">
-                        @error('post_name')
-                        <div class="invalid-feedback">
-                            {{$errors->first('post_name')}}
                         </div>
                         @enderror
                     </div>
@@ -60,16 +31,16 @@
                         @enderror
                     </div>
 
-
                     <div class="form-group">
-                        <input type="text" class="form-control @error('post_category') is-invalid @enderror " id="post_category"
-                               value="{{ old('post_category') ?? $post->post_category }}" placeholder="Categorie de l'article" name="post_category">
-                        @error('post_category')
+                        <textarea type="text" rows="5" class="form-control  @error('post_content') is-invalid @enderror" id="post_content"
+                                  value="{{ old('post_content') ?? $post->post_content }}" placeholder="Contenu de l'article" name="post_content"></textarea>
+                        @error('post_content')
                         <div class="invalid-feedback">
-                            {{$errors->first('post_category')}}
+                            {{$errors->first('post_content')}}
                         </div>
                         @enderror
                     </div>
+
                     <button class="btn btn-primary">Publier</button>
                 </form>
             </div>

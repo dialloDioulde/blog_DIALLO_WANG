@@ -5,7 +5,7 @@
     <div class="container">
         <div class="ml-5 w-75 container-fluid">
                 <div class="card my-5 justify-content-center ">
-                    <div class="card-header bg-dark text-white">Commentez l'actualité</div>
+                    <div class="card-header bg-dark text-white">EDIETR VOTRE COMMENTAIRE</div>
                     <div class="container card-body">
 
                         <form action= "{{route('addComment.update', $comment->id)}}" method="POST">
@@ -30,7 +30,6 @@
                                 @enderror
                             </div>
 
-
                             <div class="form-group">
                 <textarea type="text" rows="8" class="form-control @error('comment_content') is-invalid @enderror" id="comment_content"
                           value="{{ old('comment_content') ?? $comment->comment_content }}" placeholder="Votre Commentaire" name="comment_content"></textarea>
@@ -47,8 +46,4 @@
                 </div>
         </div>
     </div>
-
-
-
-
 @endsection
