@@ -11,13 +11,13 @@
     Ce projet s'inscrit dans le cadre de notre master 1 Informatique à l'Université Grenoble Alpes. Dans ce projet nous avons utilisés de l'Ajax, du Bootstrap  en plus de Laravel.
 </div>
 
-##Installation
-1. Allez dans la terminal, utilisez la commande ci-dessous dans un bon répertoire
-### git clone https://github.com/dialloDioulde/blog_DIALLO_WANG.git
-2. Trouvez le fichier .env, modifiez DB_DATABASE en votre propre chemin
-### exemple: DB_DATABASE=/Users/Biyun/M1_WIC/S2/Projet/laravel/blog_DIALLO_WANG/database/database.sqlite
-3. Allez dans le répertoire blog_DIALLO_WANG et tapez la commande dans la terminal
-### php artisan serve
+### Installation
+1. Allez dans la terminal, utilisez la commande ci-dessous dans un bon répertoire  
+**git clone https://github.com/dialloDioulde/blog_DIALLO_WANG.git**
+2. Trouvez le fichier .env, modifiez DB_DATABASE en votre propre chemin  
+exemple: DB_DATABASE=/Users/Biyun/M1_WIC/S2/Projet/laravel/blog_DIALLO_WANG/database/database.sqlite
+3. Allez dans le répertoire blog_DIALLO_WANG et tapez la commande dans la terminal  
+**php artisan serve**
 4. Copiez le lien sorti dans votre navigateur
 5. Vous allez voir notre blog laravel
 
