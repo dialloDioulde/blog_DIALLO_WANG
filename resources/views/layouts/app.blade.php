@@ -38,8 +38,9 @@
                         <li class="nav-item"><a href="/welcome" class="nav-link active">Home</a></li>
                         <li class="nav-item"><a href="/send_contact" class="nav-link active">Contactez-Moi</a></li>
                         <li class="nav-item"><a href="/email_contact" class="nav-link active">Rendez-Vous</a></li>
+                        @can('edit-users')
                         <li class="nav-item"><a class="nav-link active" href="/articleCrud">Admin-Articles</a></li>
-
+                        @endcan
 
 
                     </ul>
@@ -63,9 +64,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
+                                    @can('edit-users')
                                     <a class="dropdown-item" href="{{route('users.index' )}}"> Liste Des Utilisateurs</a>
-
+                                    @endcan
                                     <a class="dropdown-item" href="{{route('profiles.show', auth()->id() )}}"> Voir votre Profil</a>
                                     <a class="dropdown-item" href="{{route('profiles.edit', auth()->id() )}}"> Modifier votre Profil</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

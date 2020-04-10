@@ -14,5 +14,6 @@ $factory->define(Post::class, function (Faker $faker) {
         'post_title' => $faker->sentence(),
         'post_status'=> $faker->boolean,
         'post_type' => 'article',
+        'image' => $faker->image(),
     ];
 });

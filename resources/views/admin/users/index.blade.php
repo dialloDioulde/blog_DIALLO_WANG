@@ -16,7 +16,6 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Rôle(s)</th>
                                 <th scope="col">Actions</th>
-                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -26,19 +25,22 @@
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{implode(',', $user->roles()->get()->pluck('name')->toArray())}}</td>
+
                                     <td>
-                                        @can('edit-users')
-                                            <a href=" {{ route('users.edit', $user->id) }}"><button class="btn btn-primary">EDITER</button></a>
-                                        @endcan
-                                    </td>
-                                    <td>
-                                        @can('delete-users')
-                                            <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-warning">SUPPRIMER</button>
-                                            </form>
-                                        @endcan
+                                        <div class="d-flex">
+                                           <div class="mr-2">
+                                               @can('edit-users')
+                                                   <a href=" {{ route('users.edit', $user->id) }}"><button class="btn btn-primary">EDITER</button></a>
+                                               @endcan
+                                           </div>
+                                            @can('delete-users')
+                                                <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-warning">SUPPRIMER</button>
+                                                </form>
+                                            @endcan
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

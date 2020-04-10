@@ -22,6 +22,13 @@ class Post extends Model
     }
 
 
+    // Posts-Images
+    public function imagess(){
+
+        return $this->hasMany('App\Image','id');
+    }
+
+
     //
     public function scopeStatus($query){
         return $query->latest()->limit(3)->get();;

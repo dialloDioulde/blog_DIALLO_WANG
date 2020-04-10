@@ -39,6 +39,23 @@
                         @enderror
                     </div>
 
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input @error('image') is-invalid @enderror"
+                                   id="image" aria-describedby="inputGroupFileAddon04" name="image">
+                            <label class="custom-file-label" for="image">Choisir une image</label>
+                        </div>
+                        @error('image')
+                        <div class="invalid-feedback">
+                            {{$errors->first('image')}}
+                        </div>
+                        @enderror
+                        <div class="input-group-append mb-2">
+                            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Image</button>
+                        </div>
+                    </div>
+
+
                     <div class="d-flex">
                         <button class="btn btn-secondary text-white mr-2">Publier Votre Post</button>
                         <a class="btn btn-secondary mr-2" href="/welcome">ANNULER</a>

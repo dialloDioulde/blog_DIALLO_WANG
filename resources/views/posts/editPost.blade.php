@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container border">
+    <div class=" container border-top border-bottom bg-white">
         <br>
-        <div class="card mt-5 ml-5 mr-5 mb-5">
-            <div class="card-header bg-info text-white">Publier Votre Post</div>
-            <div class="container card-body">
+        <div class="card mt-5 ml-5 mr-5 mb-5 bg-white">
+            <div class="card-header bg-white text-dark">Publier Votre Post</div>
+            <div class="container bg-white card-body">
                 <form action="{{route('post.update', $post->id)}}" method="POST" enctype="multipart/form-data">
                     @method('PATCH')
                     @csrf
@@ -41,7 +41,26 @@
                         @enderror
                     </div>
 
-                    <button class="btn btn-primary">Publier</button>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input @error('image') is-invalid @enderror"
+                                   id="image" aria-describedby="inputGroupFileAddon04" name="image">
+                            <label class="custom-file-label" for="image">Choisir une image</label>
+                        </div>
+                        @error('image')
+                        <div class="invalid-feedback">
+                            {{$errors->first('image')}}
+                        </div>
+                        @enderror
+                        <div class="input-group-append mb-2">
+                            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Image</button>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <button class="btn btn-secondary mr-2">Publier</button>
+                        <a class="btn btn-secondary mr-2" href="/welcome">ANNULER</a>
+                    </div>
                 </form>
             </div>
 

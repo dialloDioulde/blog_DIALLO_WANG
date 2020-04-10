@@ -33,7 +33,7 @@ class AuthServiceProvider extends ServiceProvider
 
         // Cette fonction permet uniquement à un admin de modifier un ou des utilisateur(s)
         Gate::define('edit-users', function ($user) {
-            return $user->hasAnyRole(['admin','user']);
+            return $user->hasAnyRole(['admin']);
         });
 
         // Cette fonction permet uniquement à un admin de supprimer un ou des utilisateur(s)

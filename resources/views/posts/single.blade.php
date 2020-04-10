@@ -11,25 +11,32 @@
                         <div class="border-top border-bottom">
                             <div class="d-flex offset-md-9 mt-2">
                                 @can('update', $posts)
-                                    <a class="btn btn-warning mr-2" href="{{route('post.edit', $posts->id)}}">EDITER</a>
+                                    <a href="{{route('post.edit', $posts->id)}}"><button class="btn btn-secondary mr-2">EDITER</button></a>
                                 @endcan
                                     @can('delete', $posts)
                                         <form action="{{route('post.delete', $posts->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button  class="btn btn-danger">SUPPRIMER</button>
+                                            <button  class="btn btn-secondary">SUPPRIMER</button>
                                         </form>
                                     @endcan
                             </div>
-                            <div class="d-flex col-md-8">
-                                <p>{{$posts->post_content}} </p>
+                            <div class="col-md-10">
+                                <div>
+                                    {{$posts->post_content}}
+                                </div>
+                               <div class="offset-6 mt-2 mb-2">
+                                   @if($posts->image)
+                                       <img class="img-thumnnail" src="{{asset('images/posts/' . $posts->image)}}" width="400">
+                                   @endif
+                               </div>
                             </div>
                         </div>
                         <p>Publié par {{$posts->author->name}}</p>
                     </div>
                 </div>
 
-
+                <!-- Ajout de Commentaire -->
                 <div class="card my-5 justify-content-center">
                     <div class="card-header bg-white text-dark">Commentez l'actualité</div>
                     <div class="container card-body">
@@ -72,6 +79,10 @@
                 <br/>
 
 
+                <!-- Fin d'ajout des Commentaires -->
+
+
+
 
             @endforeach
 
@@ -87,11 +98,11 @@
                             </div>
                             <div class="">
                                 <div class="d-flex offset-md-9">
-                                    <a class="btn btn-warning mr-2 editbtn" href="{{route('addComment.edit', $comment->id)}}">EDITER</a>
+                                    <a href="{{route('addComment.edit', $comment->id)}}"><button class="btn btn-secondary mr-2">EDITER</button></a>
                                     <form action="{{route('addComment.delete', $comment->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button  class="btn btn-danger">SUPPRIMER</button>
+                                        <button  class="btn btn-secondary ">SUPPRIMER</button>
                                     </form>
                                 </div>
                                 <div class="card-body">
@@ -110,6 +121,5 @@
 
 
 @endsection
-
 
 

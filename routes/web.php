@@ -100,3 +100,9 @@ Route::get('/addComment/{comment}', 'ArticlesController@edit')->name('addComment
 Route::patch('/addComment/{comment}', 'ArticlesController@update')->name('addComment.update');
 
 Route::delete('/addComment/{comment}', 'ArticlesController@destroy')->name('addComment.delete');
+
+
+
+// Images
+Route::get('/image', 'PostImagesController@create');
+Route::post('/addImage', 'PostImagesController@store')->name('addImage.store');

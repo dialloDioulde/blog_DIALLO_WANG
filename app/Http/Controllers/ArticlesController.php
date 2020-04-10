@@ -65,7 +65,7 @@ class ArticlesController extends Controller
     // Enregistrement des données d'éditions
     public function update(Request $request,$comment){
 
-        $comment = Comment::find($comment);
+        $comments = Comment::find($comment);
 
         request()->validate([
             'comment_name' => ['required'],
@@ -73,11 +73,12 @@ class ArticlesController extends Controller
             'comment_content' => ['required']
         ]);
 
-        $comment->comment_name = $request->comment_name;
-        $comment->comment_email = $request->comment_email;
-        $comment->comment_content = $request->comment_content;
+        $comments->post_id = $comment;
+        $comments->comment_name = $request->comment_name;
+        $comments->comment_email = $request->comment_email;
+        $comments->comment_content = $request->comment_content;
 
-        $comment->save();
+        $comments->update();
 
         return redirect('welcome');
 

@@ -16,21 +16,30 @@ class PostController extends Controller
     }
 
     // Enregistrement des Post envoyé par les utilisateurs
-    public function store(){
+    public function store(Request $request){
 
-        $data = request()->validate([
+        $this->validate($request, [
             'post_content' => 'required',
             'post_title' => 'required',
             'post_type' => 'required',
+            'post_image' => 'sometimes|image|max:5000',
         ]);
 
         $post = new Post();
         $post->user_id = Auth::id();
-        $post->post_title = $data['post_title'];
-        $post->post_content = $data['post_content'];
+        $post->post_title = $request->post_title;
+        $post->post_content = $request->post_content;
         $post->post_status = false;
-        $post->post_type = $data['post_type'];
+        $post->post_type = $request->post_type;
 
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filenmane = time() . '.' . $extension;
+            $file->move('images/posts/', $filenmane);
+            $post->image = $filenmane;
+        }
 
         $post->save();
 
@@ -50,17 +59,33 @@ class PostController extends Controller
 
 
     // Enregistrement des données d'éditions
-    public function update(Post $post)
+    public function update(Request $request, $post)
     {
-        $this->authorize('update', $post);
-
-        $data = request()->validate([
-            'post_content' => ['required'],
-            'post_title' => ['required'],
-            'post_type' => ['required'],
+        $this->validate($request, [
+            'post_content' => 'required',
+            'post_title' => 'required',
+            'post_type' => 'required',
+            'post_image' => 'sometimes|image|max:5000',
         ]);
 
-        $post->update($data);
+        $posts = Post::find($post);
+        $posts->user_id = Auth::id();
+        $posts->post_title = $request->post_title;
+        $posts->post_content = $request->post_content;
+        $posts->post_status = false;
+        $posts->post_type = $request->post_type;
+
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filenmane = time() . '.' . $extension;
+            $file->move('images/posts/', $filenmane);
+            $posts->image = $filenmane;
+        }
+
+
+        $posts->update();
         return redirect('welcome');
     }
 

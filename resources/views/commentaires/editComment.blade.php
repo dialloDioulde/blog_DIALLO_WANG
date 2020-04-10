@@ -5,11 +5,12 @@
     <div class="container">
         <div class="ml-5 w-75 container-fluid">
                 <div class="card my-5 justify-content-center ">
-                    <div class="card-header bg-dark text-white">EDIETR VOTRE COMMENTAIRE</div>
+                    <div class="card-header text-dark">EDIETR VOTRE COMMENTAIRE</div>
                     <div class="container card-body">
 
                         <form action= "{{route('addComment.update', $comment->id)}}" method="POST">
                             @csrf
+                            <input type="hidden" name="com" id="com" value="{{$comment->id}}">
                             <div class="form-group">
                                 <input type="text" class="form-control @error('comment_name') is-invalid @enderror " id="comment_name"
                                        value="{{ old('comment_name') ?? $comment->comment_name }}" placeholder="Votre Nom" name="comment_name">
@@ -39,7 +40,10 @@
                                 </div>
                                 @enderror
                             </div>
-                            <button class="btn btn-primary bg-dark">Commenter</button>
+                           <div class="d-flex">
+                               <button class="btn btn-secondary bg-secondary">Commenter</button>
+                               <a class="btn btn-secondary ml-2" href="/welcome">ANNULER</a>
+                           </div>
                         </form>
 
                     </div>
