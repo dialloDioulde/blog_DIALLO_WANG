@@ -52,3 +52,5 @@ Vous pouvez regarder les articles publiés en cliquant les noms d'articles ou cr
 **5 - Ajout de fichiers média pour les articles**  
 Vous pouvez ajouter un image pour votre post quand vous créez ou modifiez un poste.
 
+### Difficulté
+Nous avons utilisé Ajax avant, mais on a eu problème quand on veux ajouter un image pour un article, donc on reviens le bootstrap.
