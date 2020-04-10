@@ -34,6 +34,7 @@
                                <textarea type="text" class="form-control" rows="8" id="content" name="content" placeholder="Saisir votre Post"></textarea>
                            </div>
 
+
                            <div class="modal-footer">
                                <button type="button" class="btn btn-secondary" data-dismiss="modal">FERMER</button>
                                <button type="submit" class="btn btn-primary" id="idAction">ENREGISTRER</button>

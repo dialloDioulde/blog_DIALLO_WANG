@@ -24,7 +24,7 @@ Route::get('welcome', 'ArticlesController@index');
 
 Route::get('/articles', 'ArticlesController@create');
 
-Route::get('/article/{post_title}', 'ArticlesController@show');
+Route::get('/article/{post_title}', 'ArticlesController@show')->name('showArticle');
 
 Route::post('/articles', 'ArticlesController@store');
 
@@ -91,7 +91,6 @@ Route::delete('/post/{post}', 'PostController@destroy')->name('post.delete');
 
 
 // Commentaires
-Route::get('/Comment', 'CommentController@create');
 
 Route::post('/addComment/{post}', 'ArticlesController@store')->name('addComment.store');
 
@@ -103,6 +102,17 @@ Route::delete('/addComment/{comment}', 'ArticlesController@destroy')->name('addC
 
 
 
-// Images
-Route::get('/image', 'PostImagesController@create');
-Route::post('/addImage', 'PostImagesController@store')->name('addImage.store');
+
+// ADMIN
+
+Route::get('/post', 'AdminPostController@create')->name('post.create');
+
+Route::get('/postCrud', 'AdminPostController@index')->name('adminPage');
+
+Route::post('/postCrud', 'AdminPostController@store')->name('postCrud.store');
+
+Route::get('/postCrud/{post}', 'AdminPostController@edit')->name('postCrud.edit');
+
+Route::patch('/postCrud/{post}', 'AdminPostController@update')->name('postCrud.update');
+
+Route::delete('/postCrud/{post}', 'AdminPostController@destroy')->name('postCrud.destroy');

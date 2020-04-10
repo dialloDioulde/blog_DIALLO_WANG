@@ -39,10 +39,8 @@
                         <li class="nav-item"><a href="/send_contact" class="nav-link active">Contactez-Moi</a></li>
                         <li class="nav-item"><a href="/email_contact" class="nav-link active">Rendez-Vous</a></li>
                         @can('edit-users')
-                        <li class="nav-item"><a class="nav-link active" href="/articleCrud">Admin-Articles</a></li>
+                        <li class="nav-item"><a href="/postCrud" class="nav-link active">ADMIN</a></li>
                         @endcan
-
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -1,17 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="col-md-6 ml-5">
         <div class="card bg-white">
-            <div  class="card-header bg-white text-dark">CRÉER VOTRE POST</div>
+            <div class="card-header bg-white text-dark">EDITER VOTRE POST</div>
             <div class="container bg-white card-body">
-                <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('postCrud.update', $post->id)}}" method="POST" enctype="multipart/form-data">
+                    @method('PATCH')
                     @csrf
+
 
                     <div class="form-group">
                         <input type="text" class="form-control @error('post_title') is-invalid @enderror" id="post_title"
-                               value="{{ old('post_title') }}" placeholder="Titre" name="post_title">
+                               value="{{ old('post_title') ?? $post->post_title  }}" placeholder="Titre" name="post_title">
                         @error('post_title')
                         <div class="invalid-feedback">
                             {{$errors->first('post_title')}}
@@ -21,7 +22,7 @@
 
                     <div class="form-group">
                         <input type="text" class="form-control @error('post_type') is-invalid @enderror " id="post_type"
-                               value="{{ old('post_type') }}" placeholder="Type de l'article" name="post_type">
+                               value="{{ old('post_type') ?? $post->post_type }}" placeholder="Type de l'article" name="post_type">
                         @error('post_type')
                         <div class="invalid-feedback">
                             {{$errors->first('post_type')}}
@@ -30,8 +31,8 @@
                     </div>
 
                     <div class="form-group">
-                        <textarea type="text" rows="7" class="form-control  @error('post_content') is-invalid @enderror" id="post_content"
-                                  value="{{ old('post_content') }}" placeholder="Contenu de l'article" name="post_content"></textarea>
+                        <textarea type="text" rows="8" class="form-control  @error('post_content') is-invalid @enderror" id="post_content"
+                                  value="{{ old('post_content') ?? $post->post_content }}" placeholder="Contenu de l'article" name="post_content"></textarea>
                         @error('post_content')
                         <div class="invalid-feedback">
                             {{$errors->first('post_content')}}
@@ -55,10 +56,9 @@
                         </div>
                     </div>
 
-
                     <div class="d-flex">
-                        <button class="btn btn-info text-white mr-2">PUBLIER VOTRE POST</button>
-                        <a class="btn btn-secondary mr-2" href="/welcome">ANNULER</a>
+                        <button class="btn btn-secondary mr-2">Publier</button>
+                        <a class="btn btn-secondary mr-2" href="{{route('adminPage')}}">ANNULER</a>
                     </div>
                 </form>
             </div>

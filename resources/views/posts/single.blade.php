@@ -77,12 +77,7 @@
                     </div>
                 </div>
                 <br/>
-
-
                 <!-- Fin d'ajout des Commentaires -->
-
-
-
 
             @endforeach
 
@@ -118,8 +113,6 @@
         </div>
 
     </div>
-
-
 @endsection
 
 

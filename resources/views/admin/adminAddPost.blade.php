@@ -4,7 +4,7 @@
 
     <div class="col-md-6 ml-5">
         <div class="card bg-white">
-            <div  class="card-header bg-white text-dark">CRÉER VOTRE POST</div>
+            <div class="card-header bg-white text-dark">CRÉER VOTRE POST</div>
             <div class="container bg-white card-body">
                 <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="form-group">
-                        <textarea type="text" rows="7" class="form-control  @error('post_content') is-invalid @enderror" id="post_content"
+                        <textarea type="text" rows="8" class="form-control  @error('post_content') is-invalid @enderror" id="post_content"
                                   value="{{ old('post_content') }}" placeholder="Contenu de l'article" name="post_content"></textarea>
                         @error('post_content')
                         <div class="invalid-feedback">
@@ -57,8 +57,8 @@
 
 
                     <div class="d-flex">
-                        <button class="btn btn-info text-white mr-2">PUBLIER VOTRE POST</button>
-                        <a class="btn btn-secondary mr-2" href="/welcome">ANNULER</a>
+                        <button class="btn btn-secondary text-white mr-2">Publier Votre Post</button>
+                        <a class="btn btn-secondary mr-2" href="{{route('adminPage')}}">ANNULER</a>
                     </div>
                 </form>
             </div>

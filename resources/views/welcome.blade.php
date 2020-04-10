@@ -3,7 +3,7 @@
 @section('content')
     <div class="card my-5  ml-5 col-md-8">
         <div class="container card-body">
-            <a class="btn btn-info mb-2 mr-2 offset-md-10" href="{{route('post.create')}}">Créer un Nouveau Post</a>
+            <a class="btn btn-info mb-2 mr-2 offset-md-10" href="{{route('post.create')}}">AJOUTER UN POST</a>
 
             <div class="container-fluid">
                 <ul>
