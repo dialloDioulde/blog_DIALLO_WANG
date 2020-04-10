@@ -47,7 +47,7 @@ mail: user@user.fr
 mot de pass: password  
 Il vous permet de voir ou modifier le profil, se déconnecter en cliquant le menu nommé **user** en haut à droite.  
 Cliquez sur le menu **Home** en haut, vous allez voir les articles publiés.  
-Vous pouvez regarder les articles publiés ou créer un poste.
+Vous pouvez regarder les articles publiés en cliquant les noms d'articles ou créer un poste en cliquant **Créer un nouveau post**.
 
 **5 - Ajout de fichiers média pour les articles**  
 Vous pouvez ajouter un image pour votre post quand vous créez ou modifiez un poste.
