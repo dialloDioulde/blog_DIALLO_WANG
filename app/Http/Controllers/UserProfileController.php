@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DemeterChain\A;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -39,7 +40,8 @@ class UserProfileController extends Controller
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
 
-        return redirect()->back()->with("success","Mot de Passe Changé avec Succès !");
+        $user = Auth::user();
+        return view('profiles.show')->withUser($user);;
 
     }
 }

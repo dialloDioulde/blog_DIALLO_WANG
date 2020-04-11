@@ -120,8 +120,8 @@ class ProfileController extends Controller
                 $user->email = $request['email'];
 
                 $user->save();
-                $request->session()->flash('success', 'Votre Profil a bien été mis à jour');
-                return redirect()->back();
+                //$request->session()->flash('success', 'Votre Profil a bien été mis à jour');
+                return view('profiles.show')->withUser($user);
 
             }else{
                 return redirect()->back();

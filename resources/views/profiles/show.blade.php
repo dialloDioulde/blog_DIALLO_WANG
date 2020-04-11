@@ -15,6 +15,7 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Nom</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Statut</th>
                                 <th scope="col">Date de Création</th>
                             </tr>
                             </thead>
@@ -23,6 +24,7 @@
                                 <td>{{$user->id}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
+                                <td>{{implode(',', $user->roles()->get()->pluck('name')->toArray())}}</td>
                                 <td>{{$user->created_at}}</td>
                             </tr>
                             </tbody>

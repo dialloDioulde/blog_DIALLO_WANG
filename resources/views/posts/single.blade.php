@@ -92,12 +92,17 @@
                             </div>
                             <div class="">
                                 <div class="d-flex offset-md-9">
+                                    @can('update', $comment)
                                     <a href="{{route('addComment.edit', $comment->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil">EDITER</i></a>
+                                    @endcan
+
+                                    @can('delete', $comment)
                                     <form action="{{route('addComment.delete', $comment->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger ml-1"><i class="fa fa-trash">SUPPRIMER</i></button>
                                     </form>
+                                    @endcan
                                 </div>
                                 <div class="card-body">
                                     {{$comment->comment_content}}
