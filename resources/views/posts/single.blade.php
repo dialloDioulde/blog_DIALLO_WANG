@@ -11,13 +11,13 @@
                         <div class="border-top border-bottom">
                             <div class="d-flex offset-md-9 mt-2">
                                 @can('update', $posts)
-                                    <a href="{{route('post.edit', $posts->id)}}"><button class="btn btn-secondary mr-2">EDITER</button></a>
+                                    <a href="{{route('post.edit', $posts->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil">EDITER</i></a>
                                 @endcan
                                     @can('delete', $posts)
                                         <form action="{{route('post.delete', $posts->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button  class="btn btn-secondary">SUPPRIMER</button>
+                                            <button class="btn btn-danger ml-1"><i class="fa fa-trash">SUPPRIMER</i></button>
                                         </form>
                                     @endcan
                             </div>
@@ -72,7 +72,7 @@
                                 </div>
                                 @enderror
                             </div>
-                            <button class="btn btn-secondary bg-secondary" id="">Commenter</button>
+                            <button class="btn btn-success" id=""><i class="fa fa-eye">Commenter</i></button>
                         </form>
                     </div>
                 </div>
@@ -86,18 +86,17 @@
                     @foreach($posts->comments as $comment)
                         <div class="card-body border mb-2 mt-2">
                             <div class="d-flex col-md-6">
-                                {{$comment->id}}
                                 {{$comment->posts_id}},
                                 {{$comment->user->name}},
                                 {{$comment->created_at->diffForHumans()}}
                             </div>
                             <div class="">
                                 <div class="d-flex offset-md-9">
-                                    <a href="{{route('addComment.edit', $comment->id)}}"><button class="btn btn-secondary mr-2">EDITER</button></a>
+                                    <a href="{{route('addComment.edit', $comment->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil">EDITER</i></a>
                                     <form action="{{route('addComment.delete', $comment->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button  class="btn btn-secondary ">SUPPRIMER</button>
+                                        <button class="btn btn-danger ml-1"><i class="fa fa-trash">SUPPRIMER</i></button>
                                     </form>
                                 </div>
                                 <div class="card-body">

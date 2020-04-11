@@ -11,7 +11,7 @@ class ProfileController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'verified']);
     }
 
     /**
@@ -31,6 +31,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
+        return view('auth.passwords.change');
         //
     }
 
@@ -106,20 +107,17 @@ class ProfileController extends Controller
                 $validate = $request->validate([
                     'name' => 'required|min:3',
                     'email' => 'required|email',
-                    'password' => 'required|min:8'
                 ]);
             }else{
                 $validate = $request->validate([
                     'name' => 'required|min:3',
                     'email' => 'required|email|unique:users',
-                    'password' => 'required|min:8'
                 ]);
             }
 
             if ($validate){
                 $user->name = $request['name'];
                 $user->email = $request['email'];
-                $user->password = Hash::make($request['password']);
 
                 $user->save();
                 $request->session()->flash('success', 'Votre Profil a bien été mis à jour');

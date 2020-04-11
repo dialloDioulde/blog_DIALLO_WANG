@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="d-flex">
-                        <button class="btn btn-secondary mr-2">Publier</button>
+                        <button class="btn btn-secondary mr-2">METTRE À JOUR</button>
                         <a class="btn btn-secondary mr-2" href="/welcome">ANNULER</a>
                     </div>
                 </form>

@@ -67,6 +67,7 @@
                                     @endcan
                                     <a class="dropdown-item" href="{{route('profiles.show', auth()->id() )}}"> Voir votre Profil</a>
                                     <a class="dropdown-item" href="{{route('profiles.edit', auth()->id() )}}"> Modifier votre Profil</a>
+                                    <a class="dropdown-item" href="{{route('changePassword.create')}}">Modifier Votre Mdp</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

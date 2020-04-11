@@ -39,7 +39,8 @@ Route::get('/email_contact', 'ContactController@index');
 
 Route::post('/contacts', 'ContactController@store')->name('contatcs.store');
 
-Auth::routes();
+//Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -52,8 +53,13 @@ Route::middleware('can:gestion-users')->group(function (){
 
 
 
-// Utilisateurs profiles
+// User Profil
 
+Route::get('/changePassword', 'UserProfileController@create')->name('changePassword.create');
+
+Route::post('/change', 'UserProfileController@changePassword')->name('change.changePassword');
+
+//
 Route::get('profiles/{id}', 'ProfileController@show')->name('profiles.show');
 
 Route::get('profiles/{id}/edit', 'ProfileController@edit')->name('profiles.edit');

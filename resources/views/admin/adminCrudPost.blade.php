@@ -6,7 +6,7 @@
     <div class="container-fluid bg-white mb-2">
         <!-- Tableau D'Affichage Du Panel D'Administration -->
 
-        <a href="{{route('post.create')}}"><button class="btn btn-info offset-10 mt-2 mb-2">AJOUTER UN POST</button></a>
+        <a href="{{route('post.create')}}" class="btn btn-info offset-md-10 mt-2 mb-2 text-white"><i class="fa fa-eye">AJOUTER UN POST</i></a>
 
         <table class="table container-fluid table-responsive">
             <thead class="bg-info">
@@ -37,11 +37,11 @@
                     </td>
                     <td>
                         <div class="d-flex">
-                            <a href="{{route('postCrud.edit', $post->id )}}"><button class="btn btn-warning editbtn">EDITER</button></a>
+                            <a href="{{route('postCrud.edit', $post->id )}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil">EDITER</i></a>
                             <form action="{{ route('postCrud.destroy', $post->id) }}" method="POST" class="ml-2">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">SUPPRIMER</button>
+                                <button class="btn btn-danger ml-1"><i class="fa fa-trash">SUPPRIMER</i></button>
                             </form>
                         </div>
                     </td>
