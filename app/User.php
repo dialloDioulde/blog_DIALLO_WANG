@@ -17,8 +17,10 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','google_id'
     ];
+
+    //protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
