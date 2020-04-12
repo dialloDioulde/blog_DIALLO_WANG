@@ -41,4 +41,11 @@ return [
         'redirect'      => 'http://localhost:8000/auth/google/callback',
     ],
 
+
+    'github' => [
+        'client_id' => 'a70a7b135c1f24208ab2',
+        'client_secret' => '270ecb8acab5d26313222addf4dcbd812acbaece',
+        'redirect' => 'http://127.0.0.1:8000/callback/github',
+    ],
+
 ];

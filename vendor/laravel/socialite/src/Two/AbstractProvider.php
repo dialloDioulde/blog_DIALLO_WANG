@@ -207,7 +207,7 @@ abstract class AbstractProvider implements ProviderContract
     public function user()
     {
         if ($this->hasInvalidState()) {
-            throw new InvalidStateException;
+            //throw new InvalidStateException;
         }
 
         $response = $this->getAccessTokenResponse($this->getCode());

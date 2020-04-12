@@ -63,9 +63,13 @@
                                     </a>
                                 @endif
 
-                                <a href="{{ url('auth/google') }}" style="margin-top: 20px;" class="btn btn-lg btn-success btn-block">
-                                    <strong>Login With Google</strong>
-                                </a>
+
+                                <div class="d-flex mt-2">
+                                    <a href="{{ url('auth/google') }}" class="btn btn-lg btn-success mt-2 mr-2">Login With Google</a>
+
+                                    <a href="{{ url('/auth/redirect/github') }}" class="btn btn-lg btn-success mt-2"><i class="fa fa-github"></i> Github</a>
+
+                                </div>
                             </div>
                         </div>
                     </form>

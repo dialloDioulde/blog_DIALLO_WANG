@@ -42,11 +42,17 @@ Route::post('/contacts', 'ContactController@store')->name('contatcs.store');
 //Auth::routes();
 Auth::routes(['verify' => true]);
 
-Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
-Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Connexion avec Google
+Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
+Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
+
+
+// Connexion avec Git Hub
+Route::get('/auth/redirect/{provider}', 'GitHubController@redirect');
+Route::get('/callback/{provider}', 'GitHubController@callback');
 
 // Utilisateurs
 
