@@ -12,8 +12,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
-
+        $this->middleware(['auth', 'verified']);
     }
 
     /**
@@ -23,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        $user = User::paginate(5);
         return view('admin.users.index')->with('users', $user);
         //
     }

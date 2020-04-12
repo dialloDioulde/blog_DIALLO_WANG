@@ -1,9 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="col-md-6 ml-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 offset-md-3 bg-info text-dark">
+                <p class="mt-2 text-center"><strong>BLOG DIALLO & WANG</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mt-2 offset-md-2">
         <div class="card bg-white">
-            <div class="card-header bg-white text-dark">EDITER VOTRE POST</div>
+            <div class="card-header text-dark">EDITER VOTRE POST</div>
             <div class="container bg-white card-body">
                 <form action="{{route('post.update', $post->id)}}" method="POST" enctype="multipart/form-data">
                     @method('PATCH')
@@ -55,8 +63,8 @@
                     </div>
 
                     <div class="d-flex">
-                        <button class="btn btn-secondary mr-2">METTRE À JOUR</button>
-                        <a class="btn btn-secondary mr-2" href="/welcome">ANNULER</a>
+                        <button class="btn btn-info mr-2">METTRE À JOUR</button>
+                        <a class="btn btn-info mr-2" href="/welcome">ANNULER</a>
                     </div>
                 </form>
             </div>

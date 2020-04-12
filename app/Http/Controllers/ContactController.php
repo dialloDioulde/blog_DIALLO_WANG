@@ -7,7 +7,7 @@ use App\Http\Requests\ContactRequest;
 use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Contracts\Pagination;
 class ContactController extends Controller
 {
     public function __construct()
@@ -17,7 +17,8 @@ class ContactController extends Controller
 
     // Pour les demandes de Rendez-vous
     public function index(){
-        $contact = Contact::all();
+        $contact = Contact::paginate(5);
+
         return view('email_contact', ['contacts' => $contact]);
     }
 

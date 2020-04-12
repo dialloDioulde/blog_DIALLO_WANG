@@ -2,11 +2,19 @@
 
 @section('content')
 
-    <div class="col-md-6 ml-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 offset-md-3 bg-info text-dark">
+                <p class="mt-2 text-center"><strong>BLOG DIALLO & WANG</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mt-2 offset-md-2">
         <div class="card bg-white">
             <div class="card-header bg-white text-dark">CRÉER VOTRE POST</div>
             <div class="container bg-white card-body">
-                <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('postCrud.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
@@ -57,8 +65,8 @@
 
 
                     <div class="d-flex">
-                        <button class="btn btn-secondary text-white mr-2">Publier Votre Post</button>
-                        <a class="btn btn-secondary mr-2" href="{{route('adminPage')}}">ANNULER</a>
+                        <button class="btn btn-info text-white mr-2">PUBLIER</button>
+                        <a class="btn btn-info mr-2" href="{{route('adminPage')}}">RETOUR</a>
                     </div>
                 </form>
             </div>

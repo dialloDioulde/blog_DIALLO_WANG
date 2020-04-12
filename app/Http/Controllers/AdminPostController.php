@@ -15,7 +15,7 @@ class AdminPostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(6);
         return view('admin/adminCrudPost', compact('posts'));
     }
 
@@ -26,7 +26,7 @@ class AdminPostController extends Controller
      */
     public function create()
     {
-        return view('admin/adminAddPost');
+        return view('admin/adminCreatePost');
     }
 
     /**

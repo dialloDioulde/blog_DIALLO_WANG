@@ -21,7 +21,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="bg-info">
+<body class="">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -35,11 +35,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a href="/welcome" class="nav-link active">Home</a></li>
-                        <li class="nav-item"><a href="/send_contact" class="nav-link active">Contactez-Moi</a></li>
-                        <li class="nav-item"><a href="/email_contact" class="nav-link active">Rendez-Vous</a></li>
+                        <li class="nav-item"><a href="/welcome" class="nav-link active">HOME</a></li>
+                        <li class="nav-item"><a href="/send_contact" class="nav-link active">CONTACTEZ-MOI</a></li>
                         @can('edit-users')
-                        <li class="nav-item"><a href="/postCrud" class="nav-link active">ADMIN</a></li>
+                            <li class="nav-item"><a href="/email_contact" class="nav-link active">RENDEZ-VOUS</a></li>
+                            <li class="nav-item"><a href="/postCrud" class="nav-link active">ADMIN-POST</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="{{route('users.index' )}}">ADMIN-USERS</a></li>
                         @endcan
                     </ul>
 
@@ -62,12 +63,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @can('edit-users')
-                                    <a class="dropdown-item" href="{{route('users.index' )}}"> Liste Des Utilisateurs</a>
-                                    @endcan
-                                    <a class="dropdown-item" href="{{route('profiles.show', auth()->id() )}}"> Voir votre Profil</a>
-                                    <a class="dropdown-item" href="{{route('profiles.edit', auth()->id() )}}"> Modifier votre Profil</a>
-                                    <a class="dropdown-item" href="{{route('changePassword.create')}}">Modifier Votre Mdp</a>
+
+                                    <a class="dropdown-item" href="{{route('profiles.show', auth()->id() )}}">PROFIL</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

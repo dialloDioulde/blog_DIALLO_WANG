@@ -1,15 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 offset-md-3 bg-info text-dark">
+                <p class="mt-2 text-center"><strong>BLOG DIALLO & WANG</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Liste Des Utilisateurs') }}</div>
+                    <div class="card-header text-center text-dark bg-info">{{ __('LISTE DES UTILISATEURS') }}</div>
 
                     <div class="card-body">
                         <table class="table">
-                            <thead class="thead-dark">
+                            <thead class="bg-info">
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Nom</th>
@@ -30,14 +38,14 @@
                                         <div class="d-flex">
                                            <div class="mr-2">
                                                @can('edit-users')
-                                                   <a href=" {{ route('users.edit', $user->id) }}"><button class="btn btn-primary">EDITER</button></a>
+                                                   <a href=" {{ route('users.edit', $user->id) }}"class="btn btn-primary "><i class="fa fa-pencil"></i></a>
                                                @endcan
                                            </div>
                                             @can('delete-users')
                                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-warning">SUPPRIMER</button>
+                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                                 </form>
                                             @endcan
                                         </div>
@@ -50,5 +58,13 @@
                 </div>
             </div>
         </div>
+    </div>
+
+
+    <div class="row d-flex justify-content-center mt-2">
+        {{$users->links()}}
+    </div>
+    <div>
+        <a href="/welcome"><button class="btn btn-info offset-5 mt-2">PAGE D'ACCUEIL</button></a>
     </div>
 @endsection

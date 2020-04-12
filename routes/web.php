@@ -20,7 +20,7 @@ Route::get('/', 'HomeController@index');
 
 
 // Articles
-Route::get('welcome', 'ArticlesController@index');
+Route::get('welcome', 'ArticlesController@index')->name('welcome');
 
 Route::get('/articles', 'ArticlesController@create');
 
@@ -109,9 +109,9 @@ Route::delete('/addComment/{comment}', 'ArticlesController@destroy')->name('addC
 
 
 
-// ADMIN
+// ADMIN POST
 
-Route::get('/post', 'AdminPostController@create')->name('post.create');
+Route::get('/Crud', 'AdminPostController@create')->name('postCrud.create');
 
 Route::get('/postCrud', 'AdminPostController@index')->name('adminPage');
 

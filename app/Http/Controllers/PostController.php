@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+
     // Affiche la page de création de Post aux utilisateurs
     public function create(){
         return view('posts.createPost');
