@@ -22,6 +22,8 @@ class CreateCommentsTable extends Migration
             $table->text('comment_content');
             $table->timestamps();
         });
+
+
     }
 
     /**

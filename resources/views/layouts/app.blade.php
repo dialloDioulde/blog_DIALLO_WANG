@@ -87,7 +87,7 @@
         </main>
     </div>
 
-    <div class="card text-center ml-2 mt-5">
+    <div class="card text-center ml-2 mr-2 mt-5">
         <div class="card-body">
            <div class="d-flex offset-3">
                <div class="col-4">

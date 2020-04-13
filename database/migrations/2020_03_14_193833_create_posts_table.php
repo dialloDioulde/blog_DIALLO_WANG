@@ -23,6 +23,11 @@ class CreatePostsTable extends Migration
             $table->string('image')->nullable();
             $table->timestamps();
         });
+
+        Schema::table('posts', function ($table){
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+        });
     }
 
     /**
@@ -32,6 +37,7 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
+        Schema::dropForeign('user_id');
         Schema::dropIfExists('posts');
     }
 }

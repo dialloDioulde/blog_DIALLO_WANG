@@ -60,6 +60,11 @@ Route::get('/auth/redirect/{provider}', 'GitHubController@redirect');
 Route::get('/callback/{provider}', 'GitHubController@callback');
 
 
+// Connexion avec Facebook
+Route::get('/redirect', 'FacebookController@redirect');
+Route::get('/callback', 'FacebookController@callback');
+
+
 // -------------------------------------------------------------------------------------
 // Utilisateurs
 

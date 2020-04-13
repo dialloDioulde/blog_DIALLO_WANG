@@ -63,13 +63,14 @@
                                     </a>
                                 @endif
 
+                            </div>
+                            <div class="ml-5 d-flex mt-2">
+                                <a href="{{ url('auth/google') }}" class="btn btn-lg btn-success mt-2 mr-2"><i class="fa fa-google-plus ml-2 mr-2">Login With Google</i></a>
 
-                                <div class="d-flex mt-2">
-                                    <a href="{{ url('auth/google') }}" class="btn btn-lg btn-success mt-2 mr-2">Login With Google</a>
+                                <a href="{{ url('/auth/redirect/github') }}" class="btn btn-lg btn-success mt-2"><i class="fa fa-github"></i> Login  With Github</a>
 
-                                    <a href="{{ url('/auth/redirect/github') }}" class="btn btn-lg btn-success mt-2"><i class="fa fa-github"></i> Github</a>
+                                <a href="{{url('/redirect')}}" class="btn btn-lg btn-success mt-2 ml-2"><i class="fa fa-facebook mr-2"></i>Login With Facebook</a>
 
-                                </div>
                             </div>
                         </div>
                     </form>
@@ -79,3 +80,5 @@
     </div>
 </div>
 @endsection
+
+
