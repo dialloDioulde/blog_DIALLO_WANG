@@ -45,12 +45,22 @@ Si vous avez déjà créé un commentaire, vous avez la possibilité de le modif
 Pour tester:  
 mail: user@user.fr  
 mot de pass: password  
+1. Vous devez d'abord créer un compte dans https://mailtrap.io .
+2. Accéder dans votre compte du mailtrap, cliquez sur "Demo Inbox", dans le champ "SMTP Settings",  
+choisissez **Laravel** pour Integrations.
+3. Copiez **MAIL_USERNAME** et **MAIL_PASSWORD** dans le fichier **.env** 
+4. Trouvez le fichier "blog_DIALLO_WANG/app/Http/Controllers/ContactController.php", et modifiez 
+"Mail::to('syviass@outlook.com')->send(new ContactMail($contact));" au votre mail (compte du mailtrap).
+5. Se connecter par le compte du test.
+**Cet étape est pour vérifier l'adresse mail**
 Il vous permet de voir ou modifier le profil, se déconnecter en cliquant le menu nommé **user** en haut à droite.  
 Cliquez sur le menu **Home** en haut, vous allez voir les articles publiés.  
-Vous pouvez regarder les articles publiés en cliquant les noms d'articles ou créer un poste en cliquant **Créer un nouveau post**.
+Vous pouvez regarder les articles publiés en cliquant les noms d'articles ou créer un poste en cliquant **Créer un post**.
 
 **5 - Ajout de fichiers média pour les articles**  
 Vous pouvez ajouter un image pour votre post quand vous créez ou modifiez un poste.
+
+**6 - Identification avec Google et Github en utilisant Socialite**
 
 ### Difficulté
 Nous avons utilisé Ajax avant, mais on a eu problème quand on veux ajouter un image pour un article, donc on reviens le bootstrap.
