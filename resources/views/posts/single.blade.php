@@ -90,9 +90,9 @@
 
                     <div class="col-md-6">
                         <h2>Les Commenatires : </h2>
-                        @foreach($posts->comments()->latest()->get() as $comment)
-                            <div class="mb-2">
-                                <strong>{{$comment->user->name}}</strong>:
+                        @foreach($posts->comments()->latest()->paginate(5) as $comment)
+                            <div class="mb-2 mr-2">
+                                <strong class="mr-2">{{$comment->user->name}}</strong>:
                                 {{$comment->comment_content}},
                                 {{$comment->created_at->diffForHumans()}}
                             </div>
@@ -117,6 +117,10 @@
                 </div>
             @endforeach
         </div>
+    </div>
+
+    <div class="row offset-8 mt-2">
+        {{$posts->comments()->latest()->paginate(5)->links()}}
     </div>
 
 @endsection

@@ -16,27 +16,27 @@ class GitHubController extends Controller
     public function callback($provider)
     {
 
-        $getInfo = Socialite::driver($provider)->user();
+        $userInfo = Socialite::driver($provider)->user();
 
-        $user = $this->createUser($getInfo,$provider);
+        $user = $this->createUser($userInfo,$provider);
 
         auth()->login($user);
 
         return redirect()->to('/home');
 
     }
-    function createUser($getInfo,$provider){
+    function createUser($userInfo,$provider){
 
-        $user = User::where('provider_id', $getInfo->id)->first();
+        $userGit = User::where('provider_id', $userInfo->id)->first();
 
-        if (!$user) {
+        if (!$userGit) {
             $user = User::create([
-                'name'     => $getInfo->name,
-                'email'    => $getInfo->email,
+                'name'     => $userInfo->name,
+                'email'    => $userInfo->email,
                 'provider' => $provider,
-                'provider_id' => $getInfo->id
+                'provider_id' => $userInfo->id
             ]);
         }
-        return $user;
+        return $userGit;
     }
 }

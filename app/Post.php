@@ -31,7 +31,7 @@ class Post extends Model
 
     //
     public function scopeStatus($query){
-        return $query->latest()->limit(3)->get();;
+        return $query->latest()->take(3)->get();
     }
 
     //

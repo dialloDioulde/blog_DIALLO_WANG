@@ -18,6 +18,7 @@
 
 Route::get('/', 'HomeController@index');
 
+// -------------------------------------------------------------------------------------
 
 // Articles
 Route::get('welcome', 'ArticlesController@index')->name('welcome');
@@ -29,6 +30,7 @@ Route::get('/article/{post_title}', 'ArticlesController@show')->name('showArticl
 Route::post('/articles', 'ArticlesController@store');
 
 
+// -------------------------------------------------------------------------------------
 
 // Contatcs
 //Route::get('/contactList', 'ContactController@index');
@@ -38,6 +40,9 @@ Route::get('/send_contact', 'ContactController@create');
 Route::get('/email_contact', 'ContactController@index');
 
 Route::post('/contacts', 'ContactController@store')->name('contatcs.store');
+
+
+// -------------------------------------------------------------------------------------
 
 //Auth::routes();
 Auth::routes(['verify' => true]);
@@ -54,6 +59,8 @@ Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback')
 Route::get('/auth/redirect/{provider}', 'GitHubController@redirect');
 Route::get('/callback/{provider}', 'GitHubController@callback');
 
+
+// -------------------------------------------------------------------------------------
 // Utilisateurs
 
 Route::middleware('can:gestion-users')->group(function (){
@@ -76,6 +83,9 @@ Route::get('profiles/{id}/edit', 'ProfileController@edit')->name('profiles.edit'
 Route::patch('profiles/edit', 'ProfileController@update')->name('profiles.update');
 
 
+
+// -------------------------------------------------------------------------------------
+// On a laissé tomber le traitement en AJAX au final parce qu'on a pas pu gérer l'ajout de l'Image
 // CRUD utilisateurs AJAX
 
 Route::get('/articleCrud', 'ArticlesAjaxController@index');
@@ -89,8 +99,9 @@ Route::put('/updatePost/{id}', 'ArticlesAjaxController@update');
 Route::delete('/deletePost/{id}', 'ArticlesAjaxController@destroy');
 
 
+// -------------------------------------------------------------------------------------
 
-// Création et Gestion de Post par le user même
+// Gestion de Post par le user même
 
 Route::get('/post', 'PostController@create')->name('post.create');
 
@@ -104,6 +115,7 @@ Route::delete('/post/{post}', 'PostController@destroy')->name('post.delete');
 
 
 
+// -------------------------------------------------------------------------------------
 
 // Commentaires
 
@@ -117,6 +129,8 @@ Route::delete('/addComment/{comment}', 'ArticlesController@destroy')->name('addC
 
 
 
+
+// -------------------------------------------------------------------------------------
 
 // ADMIN POST
 
