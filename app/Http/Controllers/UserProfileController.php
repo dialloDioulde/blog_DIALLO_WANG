@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class UserProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+
     public function create()
     {
         return view('auth.passwords.change');

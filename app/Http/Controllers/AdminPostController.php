@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminPostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -131,8 +136,14 @@ class AdminPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
-    {
+    public function destroy(Post $post){
+
+        $comments = Comment::where('posts_id', $post->id)->get(); // Récupère les commentaires du Post
+
+        foreach ($comments as $comment){
+            $comment->delete();
+        }
+
         $post->delete();
         return redirect()->route('adminPage');
     }

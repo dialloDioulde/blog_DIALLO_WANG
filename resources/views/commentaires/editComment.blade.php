@@ -5,7 +5,7 @@
     <div class="container">
         <div class="ml-5 w-75 container-fluid">
                 <div class="card my-5 justify-content-center ">
-                    <div class="card-header text-dark">EDIETR VOTRE COMMENTAIRE</div>
+                    <div class="card-header text-dark">EDITER VOTRE COMMENTAIRE</div>
                     <div class="container card-body">
 
                         <form action= "{{route('addComment.update', $comment->id)}}" method="POST">
@@ -32,17 +32,19 @@
                             </div>
 
                             <div class="form-group">
-                <textarea type="text" rows="8" class="form-control @error('comment_content') is-invalid @enderror" id="comment_content"
-                          value="{{ old('comment_content') ?? $comment->comment_content }}" placeholder="Votre Commentaire" name="comment_content"></textarea>
+                            <textarea type="text" rows="8" class="form-control @error('comment_content') is-invalid @enderror"
+                                      id="comment_content" value="{{ old('comment_content') ?? $comment->comment_content }}"
+                                      placeholder="Votre Commentaire" name="comment_content"></textarea>
                                 @error('comment_content')
                                 <div class="invalid-feedback">
                                     {{$errors->first('comment_content')}}
                                 </div>
                                 @enderror
                             </div>
+
                            <div class="d-flex">
-                               <button class="btn btn-secondary bg-secondary">Commenter</button>
-                               <a class="btn btn-secondary ml-2" href="/welcome">ANNULER</a>
+                               <button class="btn btn-info">METTRE À JOUR</button>
+                               <a class="btn btn-info ml-2" href="/welcome">ANNULER</a>
                            </div>
                         </form>
 

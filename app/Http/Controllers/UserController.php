@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Comment;
+use App\Post;
 use App\Role;
 use App\User;
 use Illuminate\Support\Facades\Gate;
@@ -105,8 +107,25 @@ class UserController extends Controller
 
         }
 
-        $user->roles()->detach();
-        $user->delete();
+        $user_posts = Post::where('user_id', $user->id)->get(); // Récupère tous les Posts de l'utilisateur
+        $user_comments = Comment::where('user_id', $user->id)->get(); // Récupère tous les Commentaires de l'utilisateur
+
+        foreach ($user_posts as $user_post){        // Pour chacun des posts on
+            $comments = Comment::where('post_id', $user_post->id)->get(); // Récupère les commentaires
+
+            foreach ($comments as $comment){    // Pour chacun des Commentaires
+                $comment->delete();             // On le supprime
+            }
+
+            $user_post->delete(); // On supprime le post
+        }
+
+        foreach ($user_comments as $user_comment){ // Pour chacun des Commentaires de l'utilisateur
+            $user_comment->delete();               // On le supprime
+        }
+
+        $user->roles()->detach(); // On retire également le rôle attribué à l'utilisateur
+        $user->delete(); // On supprime l'utilisateur
 
         return redirect()->route('users.index');
 

@@ -23,6 +23,7 @@ class PostController extends Controller
     // Enregistrement des Post envoyé par les utilisateurs
     public function store(Request $request){
 
+        // Validation des données
         $this->validate($request, [
             'post_content' => 'required',
             'post_title' => 'required',
@@ -38,12 +39,12 @@ class PostController extends Controller
         $post->post_type = $request->post_type;
 
 
-        if($request->hasFile('image')){
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
+        if($request->hasFile('image')){ //On vérifie qu'il y'a bien une image
+            $file = $request->file('image'); // On récupère l'image
+            $extension = $file->getClientOriginalExtension(); // On récupère l'extension
             $filenmane = time() . '.' . $extension;
-            $file->move('images/posts/', $filenmane);
-            $post->image = $filenmane;
+            $file->move('images/posts/', $filenmane); // On enregistre l'image dans le dossier précisé
+            $post->image = $filenmane; // On enregistre
         }
 
         $post->save();
@@ -56,7 +57,7 @@ class PostController extends Controller
     // Retourne la page d'Edition des Post
     public function edit(Post $post){
 
-        $this->authorize('update', $post);
+        $this->authorize('update', $post); // On protége l'édition du Post
 
         return view('posts/editPost', compact('post'));
 
@@ -81,12 +82,12 @@ class PostController extends Controller
         $posts->post_type = $request->post_type;
 
 
-        if($request->hasFile('image')){
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
+        if($request->hasFile('image')){ //On vérifie qu'il y'a bien une image
+            $file = $request->file('image'); // On récupère l'image
+            $extension = $file->getClientOriginalExtension(); // On récupère l'extension
             $filenmane = time() . '.' . $extension;
-            $file->move('images/posts/', $filenmane);
-            $posts->image = $filenmane;
+            $file->move('images/posts/', $filenmane); // On enregistre l'image dans le dossier précisé
+            $posts->image = $filenmane; // On enregistre
         }
 
 
@@ -98,7 +99,13 @@ class PostController extends Controller
     // Suppression de Post
     public function destroy(Post $post){
 
-        $this->authorize('delete', $post);
+        $this->authorize('delete', $post); // Protège la suppression du Post
+
+        $comments = Comment::where('posts_id', $post->id)->get(); // Récupère les commentaires du Post
+
+        foreach ($comments as $comment){
+            $comment->delete();
+        }
 
         $post->delete();
         return redirect('welcome');
