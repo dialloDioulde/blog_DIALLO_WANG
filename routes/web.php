@@ -137,7 +137,7 @@ Route::delete('/addComment/{comment}', 'ArticlesController@destroy')->name('addC
 
 // -------------------------------------------------------------------------------------
 
-// ADMIN POST
+// ADMIN CRUD POST
 
 Route::get('/Crud', 'AdminPostController@create')->name('postCrud.create');
 

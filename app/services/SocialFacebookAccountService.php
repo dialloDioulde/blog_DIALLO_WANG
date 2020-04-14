@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+use App\Role;
 use App\SocialFacebookAccount;
 use App\User;
 use Laravel\Socialite\Contracts\User as ProviderUser;
@@ -31,9 +32,16 @@ class SocialFacebookAccountService
                     'name' => $providerUser->getName(),
                     'password' => md5(rand(1,10000)),
                 ]);
+
+
+                $userRole = Role::where('name','user')->first();
+
+                $user->roles()->attach($userRole);
             }
 
+
             $account->user()->associate($user);
+
             $account->save();
 
             return $user;

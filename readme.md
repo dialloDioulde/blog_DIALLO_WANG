@@ -62,5 +62,5 @@ Vous pouvez ajouter un image pour votre post quand vous créez ou modifiez un po
 
 **6 - Identification avec Google et Github en utilisant Socialite**
 
-### Difficulté
+## Difficulté
 Nous avons utilisé Ajax avant, mais on a eu problème quand on veux ajouter un image pour un article, donc on reviens le bootstrap.

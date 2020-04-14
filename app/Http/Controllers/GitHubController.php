@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Validator,Redirect,Response,File;
@@ -34,8 +35,12 @@ class GitHubController extends Controller
                 'name'     => $userInfo->name,
                 'email'    => $userInfo->email,
                 'provider' => $provider,
-                'provider_id' => $userInfo->id
+                'provider_id' => $userInfo->id,
             ]);
+
+            $userRole = Role::where('name','user')->first();
+
+            $user->roles()->attach($userRole);
         }
         return $userGit;
     }

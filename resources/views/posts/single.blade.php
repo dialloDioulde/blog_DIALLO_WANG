@@ -10,9 +10,9 @@
         </div>
     </div>
 
-    <div class="container mt-2">
+    <div class="container mt-4">
         <div class="">
-            @foreach( $post as $posts)
+            @foreach( $post	 as $posts)
                 <h2>{{$posts->author->name}} :</h2>
                 <div class="row">
                     <div class="col-md-6">
@@ -122,6 +122,8 @@
     <div class="row offset-8 mt-2">
         {{$posts->comments()->latest()->paginate(5)->links()}}
     </div>
+
+
 
 @endsection
 
