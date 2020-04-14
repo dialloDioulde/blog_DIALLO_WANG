@@ -6,6 +6,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
+<div>Projet réalisé entièrement par DIALLO Mamadou & WANG Biyun </div>
 
 <div>
     Ce projet s'inscrit dans le cadre de notre master 1 Informatique à l'Université Grenoble Alpes. Dans ce projet nous avons utilisés de l'Ajax, du Bootstrap  en plus de Laravel.
@@ -60,7 +61,22 @@ Vous pouvez regarder les articles publiés en cliquant les noms d'articles ou cr
 **5 - Ajout de fichiers média pour les articles**  
 Vous pouvez ajouter un image pour votre post quand vous créez ou modifiez un poste.
 
-**6 - Identification avec Google et Github en utilisant Socialite**
+**6 - Identification avec Google, Facebook et Github en utilisant Socialite**
+Vous pouvez tester les identifications par Google, Facebook et Github en utilisant vos propres Id App et Clé secret. 
+Il faut juste aller dans App/config/service.php pour remplacer nos identifiants par les vôtre. Et il faut également dans App/config/app.php pour ajouter les references socialite pour pouvoir faire fonctionner ces identifications. 
+Voici un lien qui pourra vous guider dans l'obtention de votre identifiant Google. 
+https://appdividend.com/2018/04/11/laravel-google-login-tutorial/
+Pour les deux restantes, la procédure est similaire à peu près. 
+
+Si vous n'utilisez pas notre dossier Vendor il faudra commenter la ligne suivante :
+throw new InvalidStateException;
+
+Dans la function user() du fichier :
+
+Vendor/Laravel/Socialite/Src/Two/AbstractProvider.php
+
+Pour que l'identification marche. 
+
 
 ## Difficulté
 Nous avons utilisé Ajax avant, mais on a eu problème quand on veux ajouter un image pour un article, donc on reviens le bootstrap.
